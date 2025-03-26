@@ -2,7 +2,7 @@ from Storm import Storm
 
 
 class Blizzard(Storm):
-    def __init__(self, name, wind_speed, temp):
+    def __init__(self, name, wind_speed, temp = None):
         self.temp = temp
         super().__init__(name, wind_speed)
 
@@ -21,3 +21,5 @@ class Blizzard(Storm):
         elif classification == "Severe blizzard":
             return "Keep warm, avoid all travel."
         return "Take care and avoid travel if possible."
+
+
