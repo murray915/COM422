@@ -3,10 +3,10 @@ from Storm import Storm
 
 class Tornado(Storm):
     def __init__(self, name, wind_speed):
-        super().__init__("none", 261)
+        super().__init__(name, wind_speed)
 
     def calculate_classification(self) -> str:
-        if self.wind_speed <= 40:
+        if self.wind_speed < 40:
             return "Unclassified"
         elif self.wind_speed <= 72:
             return "F0"
@@ -25,8 +25,8 @@ class Tornado(Storm):
     def get_advice(self) -> str:
         classification = self.calculate_classification()
 
-        if classification in ["Unclassified", "F0", "F1"]:
+        if classification in ["F0", "F1"]:
             return "Find safe room/shelter, shield yourself from debris"
-        elif classification in ["F2", "F3", "F4" "F5"]:
+        elif classification in ["F2", "F3", "F4", "F5"]:
             return "Find underground shelter, crouch near to the floor covering your head with your hands"
         return "There is no need to panic"
