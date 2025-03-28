@@ -14,4 +14,3 @@ class Storm(ABC):
     @abstractmethod
     def get_advice(self):
         pass
-        

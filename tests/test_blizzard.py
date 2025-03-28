@@ -36,6 +36,7 @@ def teardown_module(module):
                           ("test_8",34,0,"Snow Storm")
                           ])
 def test_blizzard_calculate_classification(name, wind_speed, temp, expected_result):    
+    """ Run for all top/bottom values for storm cat """
     
     bliz.name = name
     bliz.wind_speed = wind_speed

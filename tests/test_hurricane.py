@@ -43,9 +43,11 @@ def teardown_module(module):
                           ("test_8",156,"Category four"),
                           ("test_9",157,"Category five"),
                           ("test_10",73,"Tropical Storm"),
-                          ("test_11",0,"Tropical Storm")
+                          ("test_11",0,"Tropical Storm"),
+                          ("test_12",-10,"Tropical Storm")
                           ])
 def test_hurricane_calculate_classification(name, wind_speed, expected_result):    
+    """ Run for all top/bottom values for storm cat """
     
     Test_hurr.name = name
     Test_hurr.wind_speed = wind_speed
@@ -56,6 +58,7 @@ def test_hurricane_calculate_classification(name, wind_speed, expected_result):
 
 # -- advice function --
 def test_hurricane_get_advice_classification_1():
+    """ Cat 1 / 2 and Topical Storm return Cat 1 """
     expected_result = "Close storm shutters and stay away from windows"
     output_list = []
 
@@ -67,6 +70,7 @@ def test_hurricane_get_advice_classification_1():
         assert i == expected_result
 
 def test_hurricane_get_advice_classification_2():
+    """ Cat 3 only return Cat 2 """
     expected_result = "Coastal regions are encouraged to evacuate"
 
     output = Cat_3.get_advice()
@@ -74,6 +78,7 @@ def test_hurricane_get_advice_classification_2():
     assert output == expected_result
 
 def test_hurricane_get_advice_classification_3():
+    """ Cat 4 / 5 return Cat 3 """
     expected_result = "Evacuate"
     output_list = []
 

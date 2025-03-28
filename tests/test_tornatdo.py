@@ -46,10 +46,11 @@ def teardown_module(module):
                           ("test_10",260,"F4"),
                           ("test_11",261,"F5"),
                           ("test_12",39,"Unclassified"),
-                          ("test_12",0,"Unclassified")
+                          ("test_13",0,"Unclassified"),
+                          ("test_14",-10,"Unclassified")
                           ])
 def test_tornado_calculate_classification(name, wind_speed, expected_result):    
-    
+    """ Run for all top/bottom values for storm cat """
     Test_Tor.name = name
     Test_Tor.wind_speed = wind_speed
 

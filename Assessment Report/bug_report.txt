@@ -1,0 +1,15 @@
+
+Blizzard file:
+-'blizzard' to 'Blizzard' as output
+-'wind_speed', if statment will never return condition 2, switch condition 1 & 2
+-'Severe blizzard' required classification 'Severe Blizzard'
+
+Hurricane file:
+- classification, Condition 1, '<=' needs to be '>='
+- End return, requirement is 'Tropical Storm' for anything else
+
+Tornado:
+- classification, Condition 1, '<=' needs to be '<'. Boundary is 40 AND below = 'Unclassified'
+- get_advice, Condition 1, 'Unclassified' incorrect in list. Remove.
+- Class not returning name & wind_speed values.
+- get_advice, Condition 2, incorrectly formatted list (delimiters)

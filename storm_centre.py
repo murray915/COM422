@@ -42,3 +42,9 @@ class StormCentre:
             if storm.name == name:
                 return True
         return False
+
+"""     def print(self):
+
+        print(len(self.storm_list))
+        for i in range(len(self.storm_list)):
+            print(self.storm_list[i].name) """
