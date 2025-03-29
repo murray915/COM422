@@ -1,36 +1,8 @@
 import pytest
+from test_fixtures import *
 from hurricane import Hurricane
 
-def setup_function(function):
-    global Cat_1 
-    global Cat_2
-    global Cat_3
-    global Cat_4
-    global Cat_5
-    global Cat_5
-    global Top_Stor
-    global Test_hurr
-
-    # Within boundary Hurricane Classifications
-    Cat_1 = Hurricane("Cat_1",95)
-    Cat_2 = Hurricane("Cat_2",110)
-    Cat_3 = Hurricane("Cat_3",129)
-    Cat_4 = Hurricane("Cat_4",156)
-    Cat_5 = Hurricane("Cat_5",157)
-    Top_Stor = Hurricane("Top_Stor",5)
-    Test_hurr = Hurricane("Top_Stor",0)
-
-def teardown_function(function):
-    pass
-    
-def setup_module(module):
-    pass
-
-def teardown_module(module):
-    pass 
-
 ###### Hurricane Tests ######
-
 # -- classification function --
 @pytest.mark.parametrize('name, wind_speed, expected_result', 
                          [("test_1",74,"Category one"),
@@ -46,7 +18,7 @@ def teardown_module(module):
                           ("test_11",0,"Tropical Storm"),
                           ("test_12",-10,"Tropical Storm")
                           ])
-def test_hurricane_calculate_classification(name, wind_speed, expected_result):    
+def test_hurricane_calculate_classification(name, wind_speed, expected_result, Test_hurr):    
     """ Run for all top/bottom values for storm cat """
     
     Test_hurr.name = name
@@ -57,7 +29,7 @@ def test_hurricane_calculate_classification(name, wind_speed, expected_result):
     assert output == expected_result
 
 # -- advice function --
-def test_hurricane_get_advice_classification_1():
+def test_hurricane_get_advice_classification_1(Cat_1, Cat_2, Top_Stor):
     """ Cat 1 / 2 and Topical Storm return Cat 1 """
     expected_result = "Close storm shutters and stay away from windows"
     output_list = []
@@ -69,7 +41,7 @@ def test_hurricane_get_advice_classification_1():
     for i in output_list:
         assert i == expected_result
 
-def test_hurricane_get_advice_classification_2():
+def test_hurricane_get_advice_classification_2(Cat_3):
     """ Cat 3 only return Cat 2 """
     expected_result = "Coastal regions are encouraged to evacuate"
 
@@ -77,7 +49,7 @@ def test_hurricane_get_advice_classification_2():
 
     assert output == expected_result
 
-def test_hurricane_get_advice_classification_3():
+def test_hurricane_get_advice_classification_3(Cat_4, Cat_5):
     """ Cat 4 / 5 return Cat 3 """
     expected_result = "Evacuate"
     output_list = []

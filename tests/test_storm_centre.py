@@ -1,49 +1,37 @@
 import pytest
-from tornado import Tornado
-from blizzard import Blizzard
-from hurricane import Hurricane
+from test_fixtures import *
 from storm_centre import StormCentre
-
-
-def setup_function(function):
-    global bliz 
-    global hurr
-    global torr
-    global sc
-
-    # Within boundary Bliz Classifications
-    bliz = Blizzard("bliz",35,0)
-    hurr = Hurricane("hurr",45)
-    torr = Tornado("torr",40)
-    sc = StormCentre()
-
-
-def teardown_function(function):
-    pass
-    
-def setup_module(module):
-    pass
-
-def teardown_module(module):
-    pass 
-
-
+from Storm import Storm
 
 
 # -- classification function --
-def test_stormcentre_add_list():    
-    """ Run for all top/bottom values for storm cat """
-    
-    sc_01 = StormCentre()
+@pytest.mark.parametrize('add_list_num, storm_nam, expected_result', 
+                         [(20,"Test-1",True),
+                          (10,"Test-2",True),
+                          (21,"Test-3",False),
+                          (100,"Test-4",False)
+                          ])
+def test_stormcentre_add_list(add_list_num, storm_nam, expected_result, bliz):    
+    """ Add to storm list capacity test """    
+    storm_cen = StormCentre()
 
-    for i in range(0,9):
-        stormnam = 'Storm_' + str(i)
-        stormnam = Blizzard(stormnam,0,0)
-
-        sc_01.add_storm(stormnam)
+    for i in range(0,add_list_num -1):
+        storm_obj = Blizzard((storm_nam + '-' + str(i)),0,0) 
+        storm_cen.add_storm(storm_obj)
         
-    output = sc_01.add_storm(bliz)
-    expected_result = True
-    sc_01.print()
-
+    output = storm_cen.add_storm(bliz)
     assert output == expected_result
+
+
+def test_stormcentre_reject_dup_storms(bliz):
+    """ Add same storm name to storm list """
+    storm_cen = StormCentre()
+    #test_storm = ('bliz',0,0)
+    #test_storm_2 = ('can',0)
+    test_storm = Hurricane('bliz',0)
+    storm_cen.add_storm(test_storm)
+
+    output = storm_cen.add_storm(test_storm)        
+    #output = storm_cen.add_storm(test_storm)
+
+    assert output == False

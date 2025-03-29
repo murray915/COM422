@@ -8,8 +8,7 @@ class StormCentre:
         self.storm_list = []
 
     def add_storm(self, storm: Storm) -> bool:
-        if len(self.storm_list) <= 20 and not self.already_exists(storm.name) and ((storm, Tornado) or
-                                                                                  isinstance(storm, Blizzard)):
+        if len(self.storm_list) < 20 and not self.already_exists(storm.name) and ((storm, Tornado) or isinstance(storm, Blizzard)):
             self.storm_list.append(storm)
             return True
         return False
@@ -42,9 +41,3 @@ class StormCentre:
             if storm.name == name:
                 return True
         return False
-
-"""     def print(self):
-
-        print(len(self.storm_list))
-        for i in range(len(self.storm_list)):
-            print(self.storm_list[i].name) """
