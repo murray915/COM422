@@ -2,6 +2,13 @@ import pytest
 from tornado import Tornado
 from hurricane import Hurricane
 from blizzard import Blizzard
+from storm_centre import StormCentre
+
+##### Storm Centre(s) #####
+@pytest.fixture
+def centre_exp():
+    obj = StormCentre()
+    return obj
 
 
 ##### Blizzard #####

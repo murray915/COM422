@@ -1,24 +1,26 @@
 from Storm import Storm
 from tornado import Tornado
 from blizzard import Blizzard
-
+from hurricane import Hurricane
 
 class StormCentre:
     def __init__(self):
         self.storm_list = []
 
     def add_storm(self, storm: Storm) -> bool:
-        if len(self.storm_list) < 20 and not self.already_exists(storm.name) and ((storm, Tornado) or isinstance(storm, Blizzard)):
+        if len(self.storm_list) < 20 and not self.already_exists(storm.name) and (isinstance(storm, Tornado) or 
+                                                                                  isinstance(storm, Blizzard) or 
+                                                                                  isinstance(storm, Hurricane)):
             self.storm_list.append(storm)
             return True
         return False
 
     def remove_storm(self, name: str) -> bool:
         for storm in self.storm_list:
-            if name == storm.name:
+            if name == storm.name:                
                 self.storm_list.remove(storm)
-                return False
-        return True
+                return True
+        return False
 
     def view_storm(self, name: str) -> Storm or None:
         for storm in self.storm_list:
@@ -41,3 +43,10 @@ class StormCentre:
             if storm.name == name:
                 return True
         return False
+    
+
+
+    #### REMOVE ME ####
+    def func_print_out(self):
+        for i in range(len(self.storm_list)):
+            print(self.storm_list[i].name)

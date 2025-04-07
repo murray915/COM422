@@ -1,17 +1,4 @@
 from Storm import Storm
-from tornado import Tornado
-from hurricane import Hurricane
-
-class SunnyDay(Storm):
-    def __init__(self, name, wind_speed):
-        super().__init__(name, wind_speed)   
-
-    def calculate_classification(self) -> str:
-        return "Snow Storm"
-
-    def get_advice(self) -> str:
-        return "Sunny"
-
 
 class Blizzard(Storm):
     def __init__(self, name, wind_speed, temp):

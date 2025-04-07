@@ -1,18 +1,31 @@
 
 Blizzard file:
-- classification, 'blizzard' to 'Blizzard' as output
-- classification, 'wind_speed', if statment will never return condition 2, switch condition 1 & 2
-- get_advice, 'Severe blizzard' required classification 'Severe Blizzard'
+1. classification, 'blizzard' to 'Blizzard' as output
+2. classification, 'wind_speed', if statment will never return condition 2, switch condition 1 & 2
+3. get_advice, 'Severe blizzard' required classification 'Severe Blizzard'
 
 Hurricane file:
-- classification, Condition 1, '<=' needs to be '>='
-- classification, End return, requirement is 'Tropical Storm' for anything else
+4. classification, Condition 1, '<=' needs to be '>='
+5. classification, End return, requirement is 'Tropical Storm' for anything else
 
 Tornado:
-- classification, Condition 1, '<=' needs to be '<'. Boundary is 40 AND below = 'Unclassified'
-- get_advice, Condition 1, 'Unclassified' incorrect in list. Remove.
-- Class not returning name & wind_speed values within __init__.
-- get_advice, Condition 2, incorrectly formatted list (delimiters)
+6. classification, Condition 1, '<=' needs to be '<'. Boundary is 40 AND below = 'Unclassified'
+7. get_advice, Condition 1, 'Unclassified' incorrect in list. Remove.
+8. Class not returning name & wind_speed values within __init__.
+9. get_advice, Condition 2, incorrectly formatted list (delimiters)
 
 StormCentre:
-- add to list, <=20 to <20
+10. add to list, <=20 to <20
+11. class 'instance' missing in first def condition 3
+12. first if statement, Condition 3, missing Hurricance Class instance (& import of class)
+13. remove_storm, true & false return swap
+14. 
+
+
+
+Don't know if actual error:
+    - already_exists returns true into 'not' in condition 2 of first if. instead of return false, found in list, into if saving a true into 'not', which is alittle confusing. But not actually wrong.
+    - Syntax error on view_storm, '-> Storm or None' should be '-> Storm | None'
+        https://www.reddit.com/r/learnpython/comments/wme6p5/type_hinting_functions_with_multipe_return_types/
+
+
