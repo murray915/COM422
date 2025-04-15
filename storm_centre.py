@@ -32,21 +32,14 @@ class StormCentre:
         if isinstance(values, dict):
             for storm in self.storm_list:
                 if storm.name == name:
-                    storm.wind_speed = values["windspeed"]
+                    storm.wind_speed = values["wind_speed"]
                     return True
         else:
-            raise Exception("Values must be provided as a dictionary")
+            raise Exception("Values must be provided as a dictionary")                    
         return False
 
     def already_exists(self, name) -> bool:
         for storm in self.storm_list:
             if storm.name == name:
                 return True
-        return False
-    
-
-
-    #### REMOVE ME ####
-    def func_print_out(self):
-        for i in range(len(self.storm_list)):
-            print(self.storm_list[i].name)
+        return False    

@@ -89,7 +89,7 @@ def test_add_storms_into_list_enmass(F4, Cat_3, F2, centre_exp):
         assert output_list_remove[i][0] == True
 
 
-def test_add_and_view_storms_inc_negativetest(bliz, Cat_1, centre_exp):
+def test_add_and_view_storms_inc_negative_test(bliz, Cat_1, centre_exp):
     """ Add storm, and view storm not added. None expected return as nothing removed """     
     centre_exp.add_storm(bliz)
     output = centre_exp.view_storm(Cat_1.name)
@@ -97,3 +97,31 @@ def test_add_and_view_storms_inc_negativetest(bliz, Cat_1, centre_exp):
     
     assert output == None
     assert output_1 == bliz
+
+
+def test_add_and_update_storm(bliz, centre_exp):
+    """ Add storm, update wind_speed to 100. View storm to confirm update was successful """     
+    centre_exp.add_storm(bliz)
+    centre_exp.update_storm(bliz.name, {"name": "Bliz", "wind_speed":  100, "temp": 0})
+    
+    output = centre_exp.view_storm(bliz.name)
+
+    assert output.wind_speed == 100
+
+
+def test_add_and_update_storm_non_dictionary_input(bliz, centre_exp):
+    """ Add storm, update wind_speed to 100. Input passed non-dictionary. Exceptions Expected """     
+    
+    with pytest.raises(Exception, match="Values must be provided as a dictionary"):        
+        centre_exp.add_storm(bliz)
+        centre_exp.update_storm(bliz.name, 100)
+
+
+def test_add_and_update_storm_not_within_list(bliz, Cat_1, centre_exp):
+    """ Add storm, update wind_speed to 100 for storm not within list. Expected False returned (control inc bliz update = true)"""     
+    centre_exp.add_storm(bliz)
+    output_cat = centre_exp.update_storm(Cat_1.name, {"name": "Bliz", "wind_speed":  100})
+    output_bliz = centre_exp.update_storm(bliz.name, {"name": "Bliz", "wind_speed":  100})
+
+    assert output_cat == False
+    assert output_bliz == True
