@@ -27,5 +27,6 @@ Don't know if actual error:
     - Already_exists returns true into 'not' in condition 2 of first if. instead of return false, found in list, into if saving a true into 'not', which is alittle confusing. But not actually wrong.
     - Syntax error on view_storm, '-> Storm or None' should be '-> Storm | None'
         https://www.reddit.com/r/learnpython/comments/wme6p5/type_hinting_functions_with_multipe_return_types/
+    - view_storm, return None, when should be False
 
 
